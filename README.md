@@ -59,8 +59,8 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/
-cd aora
+git clone git@github.com:VasilKrumov/AoraApp.git
+cd AoraApp
 ```
 **Installation**
 
