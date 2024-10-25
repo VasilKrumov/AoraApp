@@ -3,13 +3,15 @@ import { useLocalSearchParams } from 'expo-router';
 import { FlatList, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import useAppwrite from '../../lib/useAppwrite';
-import { searchPosts } from '../../lib/appwrite';
 import { EmptyState, SearchInput, VideoCard } from '../../components';
+import { searchPosts } from '../../lib/appwrite';
+import useAppWriteFetchData from '../../lib/useAppWriteFetchData';
 
 const Search = () => {
   const { query } = useLocalSearchParams();
-  const { data: posts, refetch } = useAppwrite(() => searchPosts(query));
+  const { data: posts, refetch } = useAppWriteFetchData(() =>
+    searchPosts(query)
+  );
 
   useEffect(() => {
     refetch();

@@ -6,11 +6,13 @@ import { images } from '../../constants';
 
 import { getAllPosts, getLatestPosts } from '../../lib/appwrite';
 import { EmptyState, SearchInput, Trending, VideoCard } from '../../components';
-import useAppwrite from '../../lib/useAppWrite';
+import useAppWriteFetchData from '../../lib/useAppWriteFetchData';
+import { useGlobalContext } from '../../context/GlobalProvider';
 
 const Home = () => {
-  const { data: posts, refetch } = useAppwrite(getAllPosts);
-  const { data: latestPosts } = useAppwrite(getLatestPosts);
+  const { data: posts, refetch } = useAppWriteFetchData(getAllPosts);
+  const { data: latestPosts } = useAppWriteFetchData(getLatestPosts);
+  const { user } = useGlobalContext();
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -41,7 +43,9 @@ const Home = () => {
                 <Text className="font-pmedium text-sm text-gray-100">
                   Welcome Back
                 </Text>
-                <Text className="text-2xl font-psemibold text-white">VK</Text>
+                <Text className="text-2xl font-psemibold text-white">
+                  {user?.username ?? 'User'}
+                </Text>
               </View>
               <View className="mt-1.5">
                 <Image
