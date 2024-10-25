@@ -70,6 +70,8 @@ Install the project dependencies using npm:
 npm install
 ```
 
+**Update the env variables as per the `env.example`**
+
 **Running the Project**
 
 ```bash
