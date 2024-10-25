@@ -15,7 +15,7 @@ const Search = () => {
 
   useEffect(() => {
     refetch();
-  }, [query]);
+  }, [query, refetch]);
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -24,11 +24,11 @@ const Search = () => {
         keyExtractor={item => item.$id}
         renderItem={({ item }) => (
           <VideoCard
-            title={item.title}
-            thumbnail={item.thumbnail}
-            video={item.video}
-            creator={item.creator.username}
-            avatar={item.creator.avatar}
+            title={item?.title}
+            thumbnail={item?.thumbnail}
+            video={item?.video}
+            creator={item?.creator.username}
+            avatar={item?.creator.avatar}
           />
         )}
         ListHeaderComponent={() => (
